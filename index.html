@@ -5,18 +5,37 @@
   <body>
     <a-scene> 
         <a-assets>
-            <img id="wallTexture" src="stone_tile_wall_4k.blend/stoneWall.jpg" />
-            <img id="floorTexture" src="gravel_concrete_03_4k.blend/gravel.jpg">
+            <img id="wallTexture" src="stoneWall.jpg" />
+            <img id ="floorDisp" src="gravel_concrete_03_disp_4k.png">
+            <img id="floorTexture" src="gravel.jpg">
+            <img id="windowColor" src="Facade017_4K-JPG_Color.jpg">
+            <img id="windowNormal" src="Facade017_4K-JPG_Emission.jpg">
+            <img id="windowRoughness" src="Facade017_4K-JPG_Roughness.jpg">
         </a-assets>
+
+        <!-- ambient lighting -->
+        <a-entity light = "type: ambient; intensity: 0.1"></a-entity>
 
         <!-- room walls -->
         <a-plane src="#floorTexture" position="0 0 -4" rotation="-90 0 0" width="4" height="4"
-          material = "roughness: 1; metalness: 0.2"></a-plane>
+          material = "roughness: 1; metalness: 0.2"
+          displacement="map: floorDisp; scale: 0.1;"></a-plane>
         <a-plane src="#wallTexture" position="0 2 -6" rotation="0 0 0" width="4" height="4"
           material = "roughness: 1"></a-plane> 
         <a-plane src="#wallTexture" position="2 2 -4" rotation="0 -90 0" width="4" height="4"
           material = "roughness: 1"></a-plane> 
         <a-sky color="#ECECEC"></a-sky>
+
+        <!-- window -->
+        <a-plane position="0 2.2 -5.9" rotation="0 0 0" width="2" height="2"
+          material="
+            src: #windowColor;
+            normalMap: #windowNormal;
+            roughnessMap: #windowRoughness;
+            transparent: true;
+            opacity: 0.8;
+        "></a-plane>
+        <a-box position="0 2.2 -6.5" height="2" width="2" color="black"></a-box>
 
         <!-- couch -->
         <a-entity>
@@ -45,19 +64,27 @@
 
         <!-- table + lamp -->
         <a-entity>
+          <!-- table -->
           <a-box position="1.25 0.5 -5.25" material="color: #21181c" geometry="height: 0.2" ></a-box>
           <a-box position="0.85 0.25 -4.85" material="color: #21181c" geometry="depth: 0.2; height: 0.5; width: 0.2"></a-box>
           <a-box position="0.85 0.25 -5.65" material="color: #21181c" geometry="depth: 0.2; height: 0.5; width: 0.2" ></a-box>
           <a-box position="1.65 0.25 -4.85" material="color: #21181c" geometry="depth: 0.2; height: 0.5; width: 0.2"></a-box>
           <a-box position="1.65 0.25 -5.65" material="color: #21181c" geometry="depth: 0.2; height: 0.5; width: 0.2" ></a-box>
-          <a-box position="1.25 1.2 -5.25" material="color: #1b1214" geometry="primitive: cylinder; height: 0.5; radius: 0.05" visible=""></a-box>
+          
+          <!-- lamp -->
+          <a-entity position="1.25 1.2 -5.25">
+            <a-box material="color: #1b1214" geometry="primitive: cylinder; height: 0.5; radius: 0.05" visible=""></a-box>
+            <a-box material="color: #1b1214" geometry="primitive: cylinder; height: 0.2; radius: 0.01" visible=""></a-box>
+            <a-entity light="type: point; color: #c7c7af; intensity: 4; distance: 5" position="0 0.9 0"></a-entity>
+          </a-entity>
+          
+          <!-- lamp base -->
           <a-box position="1.25 0.8 -5.25" material="color: #5b2830" geometry="depth: 0.4; height: 0.5; width: 0.4" ></a-box>
-          <a-box position="1.25.22 1.2 -5.25" material="color: #1b1214" geometry="primitive: cylinder; height: 0.2; radius: 0.01" visible=""></a-box>
           <a-box position="1.25 1.5 -5.25" material="color: #ebecdd" geometry="primitive: cylinder; height: 0.5; radius: 0.35"></a-box>
-          <a-entity light="color: #c7c7af; type: ambient" data-aframe-default-light="" aframe-injected="" position="0 1.36966 0"></a-entity>
       </a-entity>
 
-      <a-camera position="-2 2 1"></a-camera>ds
+      <a-camera position="-2 2 1"></a-camera>
+      
     </a-scene>  
   </body>
 </html>
