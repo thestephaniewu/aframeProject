@@ -3,14 +3,61 @@
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene> 
+        <a-assets>
+            <img id="wallTexture" src="stone_tile_wall_4k.blend/stoneWall.jpg" />
+            <img id="floorTexture" src="gravel_concrete_03_4k.blend/gravel.jpg">
+        </a-assets>
 
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="3" height="3" color="#7BC8A4"></a-plane>
-      <a-plane position="0 1.5 -5.5" rotation="0 0 0" width="3" height="3" color="#A52A2A"></a-plane> 
-      <a-plane position="1.5 1.5 -4" rotation="0 -90 0" width="3" height="3" color="#3358ff"></a-plane> 
-      <a-sky color="#ECECEC"></a-sky>
+        <!-- room walls -->
+        <a-plane src="#floorTexture" position="0 0 -4" rotation="-90 0 0" width="4" height="4"
+          material = "roughness: 1; metalness: 0.2"></a-plane>
+        <a-plane src="#wallTexture" position="0 2 -6" rotation="0 0 0" width="4" height="4"
+          material = "roughness: 1"></a-plane> 
+        <a-plane src="#wallTexture" position="2 2 -4" rotation="0 -90 0" width="4" height="4"
+          material = "roughness: 1"></a-plane> 
+        <a-sky color="#ECECEC"></a-sky>
 
-      <a-camera position="-2 2 1"></a-camera>
+        <!-- couch -->
+        <a-entity>
+          <a-box position="1.75 0.60 -3.25" rotation="" color="black" material="color: #281c21" geometry="depth: 2; height: 0.7; width: 0.2"></a-box>
+          <!-- base -->
+          <a-box position="1.25 0.4 -3.25 " rotation="" color="black" material="color: #281c21" geometry="depth: 2; height: 0.2"></a-box>
+          <a-box position="1.25 0.5 -3.75" rotation="" color="black" material="color: #281c21" geometry="depth: 0.95; height: 0.1"></a-box>
+           <!-- arm rests -->
+          <a-box position="1.25 0.4 -4.25" rotation="" color="black" material="color: #281c21" geometry="depth: 0.3; height: 0.5"></a-box>
+          <a-box position="1.25 0.4 -2.25" rotation="" color="black" material="color: #281c21" geometry="depth: 0.3; height: 0.5"></a-box>
+          <a-box position="1.25 0.5 -2.75" rotation="" color="black" material="color: #281c21" geometry="depth: 0.95; height: 0.1"></a-box>
+        </a-entity>
+
+        <!-- paintings -->
+        <a-entity>
+          <a-box position="1.75 2.5 -3" rotation="0 0 0" color="black" material="color: #281c21" geometry="height: 1.5; width: 0.2"></a-box>
+          <a-box position="1.70 2.5 -3" rotation="0 0 0" color="black" material="color: #ebeae4" geometry="depth: 0.9; height: 1.4; width: 0.2"></a-box>
+          <a-box position="1.652 2.5 -2.95" rotation="" color="black" material="color: #c6c7a7" geometry="depth: 0.6; height: 0.65; width: 0.2"></a-box>
+          <a-box position="1.551 2.15 -3.25" rotation="0 270 0" color="black" material="color: #513c4b" geometry="primitive: circle; radius: 0.15"></a-box>
+
+          <a-box position="1.70 2.5 -4.7" rotation="0 0 0" color="black" material="color: #ebeae4" geometry="depth: 0.9; height: 1.4; width: 0.2"></a-box>
+          <a-box position="1.75 2.5 -4.7" rotation="" color="black" material="color: #281c21" geometry="height: 1.5; width: 0.2"></a-box>
+          <a-box position="1.652 2.9 -4.45" rotation="" color="black" material="color: #2b2028" geometry="depth: 0.3; height: 0.25; width: 0.2"></a-box>
+          <a-box position="1.652 2.35 -4.75" rotation="" color="black" material="color: #c6c7a7" geometry="depth: 0.6; height: 0.65; width: 0.2"></a-box>
+        </a-entity>
+
+        <!-- table + lamp -->
+        <a-entity>
+          <a-box position="1.25 0.5 -5.25" material="color: #21181c" geometry="height: 0.2" ></a-box>
+          <a-box position="0.85 0.25 -4.85" material="color: #21181c" geometry="depth: 0.2; height: 0.5; width: 0.2"></a-box>
+          <a-box position="0.85 0.25 -5.65" material="color: #21181c" geometry="depth: 0.2; height: 0.5; width: 0.2" ></a-box>
+          <a-box position="1.65 0.25 -4.85" material="color: #21181c" geometry="depth: 0.2; height: 0.5; width: 0.2"></a-box>
+          <a-box position="1.65 0.25 -5.65" material="color: #21181c" geometry="depth: 0.2; height: 0.5; width: 0.2" ></a-box>
+          <a-box position="1.25 1.2 -5.25" material="color: #1b1214" geometry="primitive: cylinder; height: 0.5; radius: 0.05" visible=""></a-box>
+          <a-box position="1.25 0.8 -5.25" material="color: #5b2830" geometry="depth: 0.4; height: 0.5; width: 0.4" ></a-box>
+          <a-box position="1.25.22 1.2 -5.25" material="color: #1b1214" geometry="primitive: cylinder; height: 0.2; radius: 0.01" visible=""></a-box>
+          <a-box position="1.25 1.5 -5.25" material="color: #ebecdd" geometry="primitive: cylinder; height: 0.5; radius: 0.35"></a-box>
+          <a-entity light="color: #c7c7af; type: ambient" data-aframe-default-light="" aframe-injected="" position="0 1.36966 0"></a-entity>
+      </a-entity>
+
+      <a-camera position="-2 2 1"></a-camera>ds
     </a-scene>  
   </body>
 </html>
