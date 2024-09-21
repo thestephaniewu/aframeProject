@@ -6,6 +6,7 @@
     <a-scene> 
         <a-assets>
             <img id="wallTexture" src="stoneWall.jpg" />
+            <img id="wallDisp" src="stone_tile_wall_disp_4k.png">
             <img id ="floorDisp" src="gravel_concrete_03_disp_4k.png">
             <img id="floorTexture" src="gravel.jpg">
             <img id="windowColor" src="Facade017_4K-JPG_Color.jpg">
@@ -19,22 +20,22 @@
         <!-- room walls -->
         <a-plane src="#floorTexture" position="0 0 -4" rotation="-90 0 0" width="4" height="4"
           material = "roughness: 1; metalness: 0.2"
-          displacement="map: floorDisp; scale: 0.1;"></a-plane>
+          displacement="map: floorDisp; scale: 1;"></a-plane>
         <a-plane src="#wallTexture" position="0 2 -6" rotation="0 0 0" width="4" height="4"
-          material = "roughness: 1"></a-plane> 
+          material = "roughness: 1"
+          displacement="map: wallDisp; scale: 1"></a-plane> 
         <a-plane src="#wallTexture" position="2 2 -4" rotation="0 -90 0" width="4" height="4"
           material = "roughness: 1"></a-plane> 
-        <a-sky color="#ECECEC"></a-sky>
+        <a-sky color="#878787"></a-sky>
 
         <!-- window -->
         <a-plane position="-.5 2.2 -5.9" rotation="0 0 0" width="2" height="2"
-          material="
+         material="
             src: #windowColor;
             normalMap: #windowNormal;
             roughnessMap: #windowRoughness;
             transparent: true;
-            opacity: 0.8;
-        "></a-plane>
+            opacity: 1;"></a-plane>
         <a-box position="-.5 2.2 -6" height="2.2" width="2.2" depth="0.1" color="black"></a-box>
         <a-box position="-.5 1.2 -5.8" height=".1" width="2.4" depth="0.7" color="black"></a-box>
 
@@ -44,17 +45,16 @@
         <a-cone position="-1.4 1.7 -5.65" radius-bottom="0.2.5" radius-top="0" height=".2" color="#228B22" rotation="0 0 0"></a-cone>
         <a-cone position="-1.4 1.8 -5.65" radius-bottom="0.2.5" radius-top="0" height=".15" color="#228B22" rotation="0 0 0"></a-cone>
         
-
         <!-- couch -->
         <a-entity>
-          <a-box position="1.75 0.60 -3.25" rotation="" color="black" material="color: #281c21" geometry="depth: 2; height: 0.7; width: 0.2"></a-box>
+          <a-box position="1.75 0.60 -3.25" color="black" material="color: #281c21" rotation="" geometry="depth: 2; height: 0.7; width: 0.2"></a-box>
           <!-- base -->
-          <a-box position="1.25 0.4 -3.25 " rotation="" color="black" material="color: #281c21" geometry="depth: 2; height: 0.2"></a-box>
-          <a-box position="1.25 0.5 -3.75" rotation="" color="black" material="color: #281c21" geometry="depth: 0.95; height: 0.1"></a-box>
+          <a-box position="1.25 0.4 -3.25" color="black" material="color: #281c21" #couch rotation=""  geometry="depth: 2; height: 0.2"></a-box>
+          <a-box position="1.25 0.5 -3.75" color="black" material="color: #281c21" rotation=""  geometry="depth: 0.95; height: 0.1"></a-box>
            <!-- arm rests -->
-          <a-box position="1.25 0.4 -4.25" rotation="" color="black" material="color: #281c21" geometry="depth: 0.3; height: 0.5"></a-box>
-          <a-box position="1.25 0.4 -2.25" rotation="" color="black" material="color: #281c21" geometry="depth: 0.3; height: 0.5"></a-box>
-          <a-box position="1.25 0.5 -2.75" rotation="" color="black" material="color: #281c21" geometry="depth: 0.95; height: 0.1"></a-box>
+          <a-box position="1.25 0.4 -4.25" color="black" material="color: #281c21" rotation="" geometry="depth: 0.3; height: 0.5"></a-box>
+          <a-box position="1.25 0.4 -2.25" color="black" material="color: #281c21" rotation="" geometry="depth: 0.3; height: 0.5"></a-box>
+          <a-box position="1.25 0.5 -2.75" color="black" material="color: #281c21" rotation="" geometry="depth: 0.95; height: 0.1"></a-box>
         </a-entity>
 
         <!-- paintings -->
